@@ -338,7 +338,7 @@ Phone links use the international format without spaces: `tel:+919389718063`.
 
 ### WhatsApp
 
-The WhatsApp card has **two links**, on the number and on the icon, so change both. Search for `wa.me`:
+WhatsApp has **three links**, so change all of them: the number and icon on the WhatsApp card, and the floating button. Search for `wa.me`:
 
 ```
 https://wa.me/919389718063?text=Hi%20Himanshu%2C%20I%20want%20to%20discuss%20a%20Project%20with%20you
@@ -346,6 +346,10 @@ https://wa.me/919389718063?text=Hi%20Himanshu%2C%20I%20want%20to%20discuss%20a%2
 
 - **Number:** country code and number, with no `+` or spaces.
 - **Message:** the text after `?text=`, which appears ready to send. Write `%20` for a space and `%2C` for a comma.
+
+### Floating call and WhatsApp buttons
+
+On screens up to 760 px wide, two round buttons stay at the bottom right, with WhatsApp above Call. They're in `<div class="fab">` near the end of `index.html`, so a new phone number needs updating there too. The colours and size are under the `.fab` rules in `css/style.css`.
 
 The **Copy** buttons copy whatever text is shown on the card, so they update by themselves when you change the text.
 
