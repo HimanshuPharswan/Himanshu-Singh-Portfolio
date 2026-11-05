@@ -113,10 +113,9 @@ Each value can be any one of these:
 
 ### 4a. Using Google Drive (recommended)
 
-
-1. Upload the image to the folder.
+1. Upload the image to Google Drive.
 2. Right-click the image → **Share** → under *General access* choose **Anyone with the link** (role: Viewer) → **Done**.
-   *Sharing the folder is not always enough. Check that each image file is set to "Anyone with the link".*
+   *Sharing a folder is not always enough. Check that each image file is set to "Anyone with the link".*
 3. Right-click the image → **Share** → **Copy link**.
 4. Paste it into `js/config.js` between the quotes for the right project, e.g.
    `xaca: "https://drive.google.com/file/d/1AbC.../view?usp=sharing",`
@@ -201,7 +200,7 @@ The site crops images to fit, so keep the important part near the centre.
 
 Until you add one, the card shows an **"HS."** monogram.
 
-1. Upload a square photo to your Drive folder and share it (see 4a).
+1. Upload a square photo to Google Drive and share it (see 4a).
 2. Paste the link into `profile: ""` in `js/config.js`.
 
 On phones the photo shows as a circle next to your name. On larger screens it fills the top of the card.

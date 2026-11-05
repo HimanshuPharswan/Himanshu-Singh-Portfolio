@@ -18,7 +18,6 @@
    ===================================================================== */
 
 window.SITE_CONFIG = {
-
   // Resume shown by the "Download CV" button.
   // Keep the local file, or paste a Drive link to your resume PDF instead.
   resume: "assets/HimanshuSingh_WebDeveloper.pdf",
