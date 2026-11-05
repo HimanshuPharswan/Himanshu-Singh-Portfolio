@@ -27,7 +27,6 @@ window.SITE_CONFIG = {
     profile:        "",   // your photo (square works best, at least 600x600)
     bullstreetedge: "assets/img/bullstreetedge-site.jpg",   // BullStreetEdge website screenshot
     wpthemes:       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=75",   // custom WordPress theme screenshot
-    abbot:          "https://images.unsplash.com/photo-1758522484646-c8694d1784fa?auto=format&fit=crop&w=1200&q=75",   // Abbot Technologies Elementor sites
     n8n:            "https://images.unsplash.com/photo-1745848413078-f85af10e5bf2?auto=format&fit=crop&w=1200&q=75",   // n8n workflow screenshot
     ghl:            "https://images.unsplash.com/photo-1686061593213-98dad7c599b9?auto=format&fit=crop&w=1200&q=75",   // GoHighLevel workflow / template screenshot
     xaca:           "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&q=75",   // Xaca Technologies company website redesign

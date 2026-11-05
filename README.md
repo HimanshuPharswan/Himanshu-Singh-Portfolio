@@ -55,7 +55,6 @@ assets/
     xaca.jpg
     n8n.jpg
     ghl.jpg
-    abbot.jpg                     Not in use (Abbot card removed)
 ```
 
 **Keep this structure.** If you rename or move `css/`, `js/` or `assets/`, the page loses its styling, images or resume.
@@ -184,8 +183,6 @@ This list shows which image each project card uses. The **Image** column is the 
 
 - **BullStreetEdge:** its backup is `assets/img/bullstreetedge.jpg`, the older image, so it still shows if `bullstreetedge-site.jpg` fails to load.
 - **All the other screenshots:** the image is also its own backup, because the file has the same name the site looks for. If one of these files goes missing, the card shows the built-in placeholder.
-
-**Not in use:** `assets/img/abbot.jpg` and the `abbot` line in `config.js` are left over from the removed Abbot Technologies card. They don't show on the page.
 
 **To replace a screenshot:** save the new image in `assets/img/` with the same filename, at 1200 × 750 px. If you use a new filename, also update its line in `js/config.js`.
 
