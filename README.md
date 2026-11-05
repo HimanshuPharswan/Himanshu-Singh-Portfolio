@@ -181,7 +181,7 @@ This list shows which image each project card uses. The **Image** column is the 
 
 **Backups for the screenshots:**
 
-- **BullStreetEdge:** its backup is `assets/img/bullstreetedge.jpg`, the older image, so it still shows if `bullstreetedge-site.jpg` fails to load.
+- **BullStreetEdge:** its backup is `assets/img/bullstreetedge.jpg`, which shows if `bullstreetedge-site.jpg` fails to load.
 - **All the other screenshots:** the image is also its own backup, because the file has the same name the site looks for. If one of these files goes missing, the card shows the built-in placeholder.
 
 **To replace a screenshot:** save the new image in `assets/img/` with the same filename, at 1200 × 750 px. If you use a new filename, also update its line in `js/config.js`.
