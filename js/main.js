@@ -118,28 +118,118 @@
     });
   });
 
-  /* ---- hobbies: tap to speed up, cube shuffle, pause when off screen ---- */
+  /* ---- hobbies: tap to play, autoplay once on touch screens, 3D Rubik's Cube ---- */
   var hobbies = document.querySelector(".hobbies");
   if (hobbies) {
-    var cubeColors = ["#ef4444", "#3b82f6", "#22c55e", "#facc15", "#f97316", "#f8fafc"];
-    var squares = hobbies.querySelectorAll(".sq");
-    var shuffleCube = function () {
-      squares.forEach(function (s) { s.style.fill = cubeColors[Math.floor(Math.random() * cubeColors.length)]; });
+    var playCard = function (card) {
+      card.classList.add("play");
+      clearTimeout(card._hobbyTimer);
+      card._hobbyTimer = setTimeout(function () { card.classList.remove("play"); }, 3600);
     };
-    shuffleCube();
-    setTimeout(function () { hobbies.querySelector(".h-cube").classList.add("ready"); }, 100);
     hobbies.querySelectorAll(".hobby").forEach(function (card) {
-      var timer;
-      card.addEventListener("click", function () {
-        card.classList.add("play");
-        clearTimeout(timer);
-        timer = setTimeout(function () { card.classList.remove("play"); }, 1800);
-        if (card.classList.contains("h-cube")) shuffleCube();
-      });
+      card.addEventListener("click", function () { playCard(card); });
     });
+
+    /* touch screens have no hover, so each card plays once when it scrolls into view */
+    if ("IntersectionObserver" in window && !reduce && window.matchMedia("(hover: none)").matches) {
+      var seen = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { playCard(entry.target); seen.unobserve(entry.target); }
+        });
+      }, { threshold: 0.7 });
+      hobbies.querySelectorAll(".hobby").forEach(function (card) { seen.observe(card); });
+    }
+
+    /* Rubik's Cube: 26 small pieces; one layer at a time turns while the whole cube rotates */
+    var rcBody = hobbies.querySelector(".rc-body");
+    var rcSize = 14;
+    var rcFaces = [
+      { axis: "x", side: 1, color: "#ef4444", turn: "rotateY(90deg)" },
+      { axis: "x", side: -1, color: "#f97316", turn: "rotateY(-90deg)" },
+      { axis: "y", side: -1, color: "#f8fafc", turn: "rotateX(90deg)" },
+      { axis: "y", side: 1, color: "#facc15", turn: "rotateX(-90deg)" },
+      { axis: "z", side: 1, color: "#22c55e", turn: "rotateY(0deg)" },
+      { axis: "z", side: -1, color: "#3b82f6", turn: "rotateY(180deg)" }
+    ];
+    var rcPieces = [];
+    [-1, 0, 1].forEach(function (x) { [-1, 0, 1].forEach(function (y) { [-1, 0, 1].forEach(function (z) {
+      if (!x && !y && !z) return;
+      var el = document.createElement("div");
+      el.className = "rc-piece";
+      var at = { x: x, y: y, z: z };
+      rcFaces.forEach(function (f) {
+        var face = document.createElement("div");
+        face.className = "rc-face";
+        face.style.background = at[f.axis] === f.side ? f.color : "#0b0f14";
+        face.style.transform = f.turn + " translateZ(" + rcSize / 2 + "px)";
+        el.appendChild(face);
+      });
+      var matrix = new DOMMatrix().translate(x * rcSize, y * rcSize, z * rcSize);
+      el.style.transform = matrix.toString();
+      rcBody.appendChild(el);
+      rcPieces.push({ el: el, matrix: matrix });
+    }); }); });
+
+    var rcAxes = { x: [1, 0, 0], y: [0, 1, 0], z: [0, 0, 1] };
+    var rcTurn = null, rcQueue = 0, rcSpin = 30, rcWait = 300, rcLast = 0, rcVisible = true;
+    var rcCard = hobbies.querySelector(".h-cube");
+    var rcHover = false;
+    rcCard.addEventListener("mouseenter", function () { rcHover = true; });
+    rcCard.addEventListener("mouseleave", function () { rcHover = false; });
+    rcCard.addEventListener("click", function () { rcQueue = 8; });
+
+    var rcStartTurn = function () {
+      var names = ["x", "y", "z"];
+      var name = names[Math.floor(Math.random() * 3)];
+      var key = { x: "m41", y: "m42", z: "m43" }[name];
+      var layer = [-1, 0, 1][Math.floor(Math.random() * 3)];
+      rcTurn = {
+        axis: rcAxes[name], dir: Math.random() < 0.5 ? 90 : -90, angle: 0,
+        pieces: rcPieces.filter(function (p) { return Math.round(p.matrix[key] / rcSize) === layer; })
+      };
+    };
+    var rcRotation = function (t, deg) { return new DOMMatrix().rotateAxisAngle(t.axis[0], t.axis[1], t.axis[2], deg); };
+    var rcTick = function (now) {
+      var dt = Math.min(now - rcLast, 50);
+      rcLast = now;
+      if (rcVisible) {
+        var fast = rcHover || rcQueue > 0 || rcCard.classList.contains("play");
+        rcSpin += dt * (fast ? 0.09 : 0.03);
+        rcBody.style.transform = "rotateX(-28deg) rotateY(" + rcSpin + "deg)";
+        if (rcTurn) {
+          var step = dt * (rcQueue > 0 ? 0.55 : fast ? 0.32 : 0.16);
+          rcTurn.angle = Math.min(rcTurn.angle + step, 90);
+          var deg = rcTurn.angle * (rcTurn.dir > 0 ? 1 : -1);
+          var t = rcTurn;
+          if (rcTurn.angle >= 90) {
+            t.pieces.forEach(function (p) {
+              var m = rcRotation(t, deg).multiply(p.matrix);
+              ["m11", "m12", "m13", "m21", "m22", "m23", "m31", "m32", "m33"].forEach(function (k) { m[k] = Math.round(m[k]); });
+              ["m41", "m42", "m43"].forEach(function (k) { m[k] = Math.round(m[k] / rcSize) * rcSize; });
+              p.matrix = m;
+              p.el.style.transform = m.toString();
+            });
+            rcTurn = null;
+            rcWait = rcQueue > 0 ? 0 : fast ? 120 : 500;
+            if (rcQueue > 0) rcQueue--;
+          } else {
+            t.pieces.forEach(function (p) { p.el.style.transform = rcRotation(t, deg).multiply(p.matrix).toString(); });
+          }
+        } else {
+          rcWait -= dt;
+          if (rcWait <= 0) rcStartTurn();
+        }
+      }
+      requestAnimationFrame(rcTick);
+    };
+    rcBody.style.transform = "rotateX(-28deg) rotateY(30deg)";
+    if (!reduce) requestAnimationFrame(function (now) { rcLast = now; rcTick(now); });
+
+    /* stop everything while the section is off screen */
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(function (entries) {
-        hobbies.classList.toggle("paused", !entries[0].isIntersecting);
+        rcVisible = entries[0].isIntersecting;
+        hobbies.classList.toggle("paused", !rcVisible);
       }).observe(hobbies);
     }
   }
