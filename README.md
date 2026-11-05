@@ -226,7 +226,7 @@ All text lives in `index.html`. Each section starts with a comment you can searc
 
 - `<!-- ============ PROFILE CARD ============ -->`: name, tagline, the three facts (Experience / Live sites / Freelance), buttons, social icons
 - `<!-- ABOUT -->`: intro paragraphs, the four numbers (50+, 45+, 450+, 60%), "What I do" cards
-- `<!-- RESUME -->`: experience timeline, internships, skills, education, certifications
+- `<!-- RESUME -->`: experience timeline, internships, skills, education, certifications, hobbies ("Beyond work")
 - `<!-- WORK -->`: projects
 - `<!-- CONTACT -->`: contact cards
 

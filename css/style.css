@@ -218,6 +218,7 @@ h4 { font-size: 17px; font-weight: 700; }
 .skills h5 { font: 600 12px/1 var(--f-body); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 10px; }
 .skills p { display: flex; flex-wrap: wrap; gap: 6px; }
 .skills i { font-style: normal; font-size: 14px; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--sunk); }
+.skills.hobbies { grid-template-columns: minmax(0, 1fr); }
 
 .split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
 .split > div { display: grid; gap: 14px; align-content: start; }
