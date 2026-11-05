@@ -118,6 +118,32 @@
     });
   });
 
+  /* ---- hobbies: tap to speed up, cube shuffle, pause when off screen ---- */
+  var hobbies = document.querySelector(".hobbies");
+  if (hobbies) {
+    var cubeColors = ["#ef4444", "#3b82f6", "#22c55e", "#facc15", "#f97316", "#f8fafc"];
+    var squares = hobbies.querySelectorAll(".sq");
+    var shuffleCube = function () {
+      squares.forEach(function (s) { s.style.fill = cubeColors[Math.floor(Math.random() * cubeColors.length)]; });
+    };
+    shuffleCube();
+    setTimeout(function () { hobbies.querySelector(".h-cube").classList.add("ready"); }, 100);
+    hobbies.querySelectorAll(".hobby").forEach(function (card) {
+      var timer;
+      card.addEventListener("click", function () {
+        card.classList.add("play");
+        clearTimeout(timer);
+        timer = setTimeout(function () { card.classList.remove("play"); }, 1800);
+        if (card.classList.contains("h-cube")) shuffleCube();
+      });
+    });
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        hobbies.classList.toggle("paused", !entries[0].isIntersecting);
+      }).observe(hobbies);
+    }
+  }
+
   /* ---- copy buttons ---- */
   document.querySelectorAll(".copy").forEach(function (btn) {
     btn.addEventListener("click", function () {

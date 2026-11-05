@@ -256,6 +256,10 @@ When you add a job, also update the matching role in your PDF resume so the two 
 
 Each skill is an `<i>` tag inside its group. Add `<i>Laravel</i>` to add one, or delete a tag to remove it.
 
+### Hobbies ("Beyond work")
+
+Each hobby is a `<button class="hobby">` inside `<div class="hobbies">` in the `<!-- RESUME -->` section. Change the text in its `<b>` and `<span>` tags. The icons are small drawings inside each button, so they load no extra files. Their colours and movement are in `css/style.css` under `/* hobbies */`, and the tap effect and cube shuffle are in `js/main.js`.
+
 ### The cycling roles under your name
 
 In `js/main.js`:
