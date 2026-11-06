@@ -305,6 +305,49 @@ h4 { font-size: 17px; font-weight: 700; }
 @keyframes press-arm { 0%, 100% { transform: scaleY(-.1); } 45%, 60% { transform: scaleY(1); } }
 @keyframes press-bar { 0%, 100% { transform: translateY(27px); } 45%, 60% { transform: translateY(0); } }
 
+/* learning: the course progress bar fills and the graduation cap hops */
+.h-learn { --c: #0d9488; }
+.h-learn .frame { fill: var(--c); }
+.h-learn .screen { fill: #f0fdfa; }
+.h-learn .base { fill: var(--muted); }
+.h-learn .lesson { fill: none; stroke: #94a3b8; stroke-width: 3; stroke-linecap: round; }
+.h-learn .cap-top, .h-learn .cap-band { fill: #134e4a; }
+.h-learn .tassel { fill: none; stroke: #f59e0b; stroke-width: 2; stroke-linecap: round; }
+.h-learn .cap { transform-origin: 96px 24px; }
+.h-learn .track { fill: #cbd5e1; }
+.h-learn .progress { fill: #f59e0b; transform-origin: 52px 43px; transform: scaleX(.35); }
+.h-learn:is(:hover, :focus-visible, .play) .progress { animation: course-progress 2.4s ease-in-out infinite; }
+.h-learn:is(:hover, :focus-visible, .play) .cap { animation: cap-hop 2.4s ease-in-out infinite; }
+.h-learn:is(:hover, :focus-visible, .play) .spark { animation: course-done 2.4s ease-in-out infinite; }
+.h-learn:is(:hover, :focus-visible, .play) .s2 { animation-delay: .15s; }
+@keyframes course-progress { 0% { transform: scaleX(.35); } 60%, 90% { transform: scaleX(1); } 100% { transform: scaleX(.35); } }
+@keyframes cap-hop { 0%, 58%, 86%, 100% { transform: translateY(0) rotate(0); } 70% { transform: translateY(-9px) rotate(-10deg); } }
+@keyframes course-done { 0%, 58%, 90%, 100% { opacity: 0; transform: scale(.3) rotate(0); } 72% { opacity: 1; transform: scale(1) rotate(45deg); } }
+
+/* news: the chip pulses, headlines refresh, and a car and bike drive past */
+.h-news { --c: #2563eb; }
+.h-news .paper { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+.h-news .title { fill: var(--c); }
+.h-news .headline { fill: none; stroke: var(--muted); stroke-width: 3; stroke-linecap: round; }
+.h-news .chip { transform-origin: 108px 24px; }
+.h-news .chip-body { fill: var(--ink); }
+.h-news .chip-core { fill: #f59e0b; }
+.h-news .pins { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-linecap: round; }
+.h-news .road { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 10 8; }
+.h-news .car-body { fill: var(--c); }
+.h-news .car-glass { fill: #dbeafe; }
+.h-news .wheel { fill: var(--ink); }
+.h-news .bike-wheel { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+.h-news .bike-frame { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.h-news .bike-tank { fill: #dc2626; }
+.h-news:is(:hover, :focus-visible, .play) .traffic { animation: news-drive 2.8s cubic-bezier(.45, 0, .55, 1) infinite; }
+.h-news:is(:hover, :focus-visible, .play) .road { animation: road .3s linear infinite; }
+.h-news:is(:hover, :focus-visible, .play) .headline { animation: news-refresh 1.4s ease-in-out infinite; }
+.h-news:is(:hover, :focus-visible, .play) .chip { animation: chip-pulse 1.4s ease-in-out infinite; }
+@keyframes news-drive { 0%, 5% { transform: translateX(0); } 45% { transform: translateX(180px); } 45.01%, 55% { transform: translateX(-170px); } 100% { transform: translateX(0); } }
+@keyframes news-refresh { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
+@keyframes chip-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.14); } }
+
 /* trek: the hiker climbs to the top and plants a flag */
 .h-trek { --c: #059669; }
 .h-trek .sun { fill: #f59e0b; transform-origin: 130px 17px; }
