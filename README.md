@@ -46,13 +46,14 @@ assets/
     clearway.jpg
     monktech.jpg
     xdctowing.jpg
+    pripsh.jpg
+    xaca-logo.webp                Xaca Technologies logo
     legalblow.jpg
     airterminalsguide.jpg
     airterminalscounter.jpg
     airportsinsights.jpg
     bullstreetedge.jpg            Backups: used if the main image fails
     wpthemes.jpg
-    xaca.jpg
     n8n.jpg
     ghl.jpg
 ```
@@ -162,17 +163,19 @@ This list shows which image each project card uses. The **Image** column is the 
 | Clearway Exteriors | `clearway` | `assets/img/clearway.jpg` | https://clrwy.com/ |
 | Monk Technologies | `monktech` | `assets/img/monktech.jpg` | https://monktechnologies.net/ |
 | XDC Towing | `xdctowing` | `assets/img/xdctowing.jpg` | https://xdctowingnyc.com/ |
+| Pripsh | `pripsh` | `assets/img/pripsh.jpg` | https://www.pripsh.com/ |
 | LegalBlow Pro | `legalblow` | `assets/img/legalblow.jpg` | https://spiraclethemes.com/legalblow-pro-addons/ |
 | Air Terminals Guide | `airterminalsguide` | `assets/img/airterminalsguide.jpg` | https://www.airterminalsguide.com/ |
 | Air Terminals Counter | `airterminalscounter` | `assets/img/airterminalscounter.jpg` | https://www.airterminalscounter.com/ |
 | Airports Insights | `airportsinsights` | `assets/img/airportsinsights.jpg` | https://www.airportsinsights.com/ |
+
+**Xaca Technologies:** uses its logo, `assets/img/xaca-logo.webp`.
 
 **Unsplash photos:**
 
 | Project | Name in `config.js` | Image | Backup |
 |---|---|---|---|
 | Custom WordPress themes | `wpthemes` | https://images.unsplash.com/photo-1555066931-4365d14bab8c | `assets/img/wpthemes.jpg` |
-| Xaca company site & client builds | `xaca` | https://images.unsplash.com/photo-1547658719-da2b51169166 | `assets/img/xaca.jpg` |
 | Social post automation | `n8n` | https://images.unsplash.com/photo-1745848413078-f85af10e5bf2 | `assets/img/n8n.jpg` |
 | GoHighLevel templates & workflows | `ghl` | https://images.unsplash.com/photo-1686061593213-98dad7c599b9 | `assets/img/ghl.jpg` |
 
@@ -479,6 +482,5 @@ It updates as you scroll. If you add a much taller section, it still works. No c
   | n8n | dlxmedia.hu | https://unsplash.com/photos/Jrz9YXN1Vwc |
   | ghl | 1981 Digital | https://unsplash.com/photos/bf9sZBcGQl4 |
   | wpthemes | Unsplash | https://images.unsplash.com/photo-1555066931-4365d14bab8c |
-  | xaca | Unsplash | https://images.unsplash.com/photo-1547658719-da2b51169166 |
 - **Website screenshots** in `assets/img/` show the live project sites listed in section 4e. Those sites' content belongs to their owners.
 - **Other backup images** in `assets/img/` were made for this site and are free to use.

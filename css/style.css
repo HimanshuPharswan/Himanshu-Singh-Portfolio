@@ -348,6 +348,25 @@ h4 { font-size: 17px; font-weight: 700; }
 @keyframes news-refresh { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
 @keyframes chip-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.14); } }
 
+/* football: the ball is kicked into the goal and the net moves */
+.h-foot { --c: #16a34a; }
+.h-foot .pitch { fill: none; stroke: var(--c); stroke-width: 3; stroke-linecap: round; }
+.h-foot .net { fill: none; stroke: var(--muted); stroke-width: 1; }
+.h-foot .post { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.h-foot .goal { transform-origin: 150px 45px; }
+.h-foot .ball-skin { fill: #f8fafc; stroke: #0f172a; stroke-width: 1.5; }
+.h-foot .ball-mark { fill: #0f172a; stroke: #0f172a; stroke-width: 1.2; stroke-linejoin: round; }
+.h-foot .ball-spin { transform-origin: 24px 57px; }
+.h-foot .spark.s1 { transform-origin: 100px 15px; }
+.h-foot .spark.s2 { transform-origin: 132px 8px; }
+.h-foot:is(:hover, :focus-visible, .play) .ball { animation: kick 2s cubic-bezier(.25, .6, .4, 1) infinite; }
+.h-foot:is(:hover, :focus-visible, .play) .ball-spin { animation: spin .5s linear infinite; }
+.h-foot:is(:hover, :focus-visible, .play) .goal { animation: net-hit 2s ease-out infinite; }
+.h-foot:is(:hover, :focus-visible, .play) .spark { animation: goal-burst 2s ease-out infinite; }
+@keyframes kick { 0%, 10% { transform: translate(0, 0); } 30% { transform: translate(50px, -34px); } 48% { transform: translate(104px, -16px); } 56% { transform: translate(110px, -6px); } 80% { transform: translate(102px, 1px); opacity: 1; } 90%, 100% { transform: translate(102px, 1px); opacity: 0; } }
+@keyframes net-hit { 0%, 46% { transform: scaleX(1); } 54% { transform: scaleX(1.08); } 68%, 100% { transform: scaleX(1); } }
+@keyframes goal-burst { 0%, 46%, 88%, 100% { opacity: 0; transform: scale(.3); } 62% { opacity: 1; transform: scale(1.1) rotate(30deg); } }
+
 /* trek: the hiker climbs to the top and plants a flag */
 .h-trek { --c: #059669; }
 .h-trek .sun { fill: #f59e0b; transform-origin: 130px 17px; }
@@ -428,6 +447,8 @@ h4 { font-size: 17px; font-weight: 700; }
 .thumb .ph b { margin-top: auto; font: 800 clamp(20px, 2.4vw, 28px)/1.05 var(--f-display); letter-spacing: -0.02em; color: var(--ink); }
 .thumb .ph span { font: 500 12px/1 var(--f-mono); color: var(--muted); }
 .thumb.has-img .ph { display: none; }
+.thumb[data-img="xaca"] { background: #fff; }
+.thumb[data-img="xaca"] img { object-fit: contain; padding: 18px 32px; }
 .work .body { padding: 18px 20px 20px; display: grid; gap: 8px; align-content: start; flex: 1; }
 .stack { font: 500 12px/1.4 var(--f-mono); color: var(--accent-ink); }
 .work .body > p:not(.stack):not(.links) { color: var(--muted); font-size: 15px; }

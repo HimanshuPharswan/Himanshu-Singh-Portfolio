@@ -11,8 +11,8 @@
    Right-click the image in Drive > File information > Manage versions >
    Upload new version. The link stays the same, so the site picks up the new image.
 
-   Project images currently use free Unsplash photos (Unsplash License).
-   Replace them with your own Drive links whenever you like.
+   Project images are screenshots and files in assets/img/, plus a few free
+   Unsplash photos (Unsplash License). Replace any of them whenever you like.
    If a link ever fails to load, the site falls back to the matching
    starter image in assets/img/ (e.g. assets/img/n8n.jpg).
    ===================================================================== */
@@ -28,7 +28,7 @@ window.SITE_CONFIG = {
     wpthemes:       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=75",   // custom WordPress theme screenshot
     n8n:            "https://images.unsplash.com/photo-1745848413078-f85af10e5bf2?auto=format&fit=crop&w=1200&q=75",   // n8n workflow screenshot
     ghl:            "https://images.unsplash.com/photo-1686061593213-98dad7c599b9?auto=format&fit=crop&w=1200&q=75",   // GoHighLevel workflow / template screenshot
-    xaca:           "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&q=75",   // Xaca Technologies company website redesign
+    xaca:           "assets/img/xaca-logo.webp",   // Xaca Technologies logo
     qualityroofs:   "assets/img/qualityroofs.jpg",   // Quality Roofs & Exteriors website screenshot
     superduper:     "assets/img/superduper.jpg",   // Super Duper Heating & Cooling website screenshot
     csrasitework:   "assets/img/csrasitework.jpg",   // CSRA Site Work and Septic website screenshot
@@ -36,6 +36,7 @@ window.SITE_CONFIG = {
     clearway:       "assets/img/clearway.jpg",   // Clearway Exteriors website screenshot
     monktech:       "assets/img/monktech.jpg",   // Monk Technologies website screenshot
     xdctowing:      "assets/img/xdctowing.jpg",   // XDC Towing website screenshot
+    pripsh:         "assets/img/pripsh.jpg",   // Pripsh website screenshot
     legalblow:      "assets/img/legalblow.jpg",   // LegalBlow Pro page screenshot
     airterminalsguide:   "assets/img/airterminalsguide.jpg",   // Air Terminals Guide website screenshot
     airterminalscounter: "assets/img/airterminalscounter.jpg",   // Air Terminals Counter website screenshot
