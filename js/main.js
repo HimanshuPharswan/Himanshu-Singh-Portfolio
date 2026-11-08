@@ -85,7 +85,29 @@
     links.forEach(function (a, n) { a.classList.toggle("active", n === current); });
   }
   window.addEventListener("scroll", setActive, { passive: true });
+  window.addEventListener("resize", setActive);
   setActive();
+
+  /* ---- direct links like index.html#contact ----
+     The browser jumps to the section before the web fonts arrive; the fonts then change line
+     wrapping and push the section down. Jump again once fonts and images are ready, unless the
+     visitor has already started scrolling themselves. Smooth scrolling (html.smooth in the CSS)
+     is only switched on after load, so the browser's first jump can't animate to a stale spot. */
+  var userMoved = false;
+  ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (ev) {
+    window.addEventListener(ev, function () { userMoved = true; }, { once: true, passive: true });
+  });
+  function goToHash() {
+    var target = null;
+    try { target = location.hash.length > 1 ? document.querySelector(location.hash) : null; } catch (e) {}
+    if (target && !userMoved) target.scrollIntoView({ block: "start" });
+    setActive();
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(goToHash);
+  window.addEventListener("load", function () {
+    goToHash();
+    requestAnimationFrame(function () { document.documentElement.classList.add("smooth"); });
+  });
 
   /* ---- theme toggle ---- */
   var root = document.documentElement;
@@ -98,6 +120,33 @@
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("hs-theme", next); } catch (e) {}
   });
+
+  /* ---- desktop: the profile card stays in view while the right side scrolls ----
+     On windows too short for the whole card, it sticks with its bottom (buttons and contact
+     icons) on screen instead of its top. */
+  var profileCard = document.querySelector(".card");
+  function placeCard() {
+    if (!profileCard) return;
+    var top = Math.min(40, window.innerHeight - profileCard.offsetHeight - 16);
+    profileCard.style.setProperty("--card-top", top + "px");
+  }
+  placeCard();
+  window.addEventListener("resize", placeCard);
+  window.addEventListener("load", placeCard);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeCard);
+
+  /* ---- phones: only the filter row of the Work bar stays stuck below the top bar ---- */
+  var workBar = document.querySelector(".work-bar");
+  var tabsBar = document.querySelector(".tabs");
+  function sizeWorkBar() {
+    if (!workBar || !tabsBar) return;
+    var head = workBar.querySelector(".head"), cs = getComputedStyle(workBar);
+    workBar.style.setProperty("--tabs-h", tabsBar.offsetHeight + "px");
+    workBar.style.setProperty("--bar-hide", (head.offsetHeight + parseFloat(cs.rowGap || 0) + parseFloat(cs.paddingTop || 0)) + "px");
+  }
+  sizeWorkBar();
+  window.addEventListener("resize", sizeWorkBar);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeWorkBar);
 
   /* ---- project filters ---- */
   var buttons = document.querySelectorAll(".filters button");
@@ -245,6 +294,23 @@
       else selectIt();
     });
   });
+
+  /* ---- floating call + WhatsApp buttons (phones) ----
+     Hidden while the profile card or the Contact section is on screen, so they never cover
+     the buttons there (both already offer call and WhatsApp). */
+  var fab = document.querySelector(".fab");
+  if (fab && "IntersectionObserver" in window) {
+    var fabCovers = new Map();
+    var fabWatch = [document.querySelector(".card"), document.getElementById("contact")];
+    fab.classList.add("fab-hide");
+    var fabObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { fabCovers.set(e.target, e.isIntersecting); });
+      var hide = false;
+      fabCovers.forEach(function (v) { if (v) hide = true; });
+      fab.classList.toggle("fab-hide", hide);
+    });
+    fabWatch.forEach(function (el) { if (el) fabObs.observe(el); });
+  }
 
   var yr = document.getElementById("year");
   if (yr) yr.textContent = new Date().getFullYear();

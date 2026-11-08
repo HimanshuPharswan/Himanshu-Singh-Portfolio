@@ -36,7 +36,9 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html { scroll-padding-top: 80px; }
+/* smooth scrolling is switched on by js/main.js after the page loads, so links like #contact land correctly */
+html.smooth { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
@@ -72,7 +74,8 @@ ul, ol, dl, dd { margin: 0; padding: 0; list-style: none; }
 /* ---------- profile card ---------- */
 .card {
   position: sticky;
-  top: 40px;
+  /* js/main.js lowers --card-top on short windows so the card's buttons stay on screen */
+  top: var(--card-top, 40px);
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r);
@@ -506,6 +509,9 @@ a.ch-value:hover { text-decoration: underline; text-decoration-color: var(--acce
   /* profile card: same large HS block as desktop, with the name centred below it */
   .card { display: flex; flex-direction: column; }
   .card .photo { min-height: 0; aspect-ratio: 1 / 1; }
+  /* until a real photo is set in js/config.js, keep the HS placeholder short so the name and buttons show on the first screen */
+  .card .photo:not(.has-img) { aspect-ratio: auto; height: 150px; }
+  .card .photo:not(.has-img) .monogram { font-size: 64px; }
   .id { padding: 20px 18px 4px; justify-items: center; text-align: center; }
   .name { font-size: 28px; }
   .role { font-size: 14px; }
@@ -531,7 +537,7 @@ a.ch-value:hover { text-decoration: underline; text-decoration-color: var(--acce
   .card .photo { aspect-ratio: 16 / 10; }
 }
 @media (min-width: 981px) and (max-height: 640px) {
-  .card { position: static; }
+  .card .photo { aspect-ratio: 16 / 8; }
 }
 /* narrower desktop layout: more room for content inside the panels */
 @media (min-width: 981px) and (max-width: 1180px) {
@@ -553,26 +559,34 @@ a.ch-value:hover { text-decoration: underline; text-decoration-color: var(--acce
    Turned off on very short screens, where the bar would cover too much of the page. */
 @media (max-width: 760px) and (min-height: 500px) {
   #work { display: block; }
+  /* Only the filter row stays visible while stuck: js/main.js sets --tabs-h (top bar height) and
+     --bar-hide (heading height), so the "Selected projects" heading slides up behind the top bar. */
   .work-bar {
-    position: sticky; top: calc(env(safe-area-inset-top, 0px) + 56px); z-index: 4;
+    --pad: 22px;
+    position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--tabs-h, 56px) - var(--bar-hide, 0px)); z-index: 4;
     gap: 10px;
-    margin: -8px -22px 18px; padding: 8px 22px 12px;
+    margin: -8px calc(var(--pad) * -1) 18px; padding: 8px var(--pad) 12px;
     background: var(--surface);
     border-bottom: 1px solid var(--line);
   }
+  .tabs { background: var(--surface); }
   .work-bar .head { gap: 4px; }
   .work-bar .eyebrow { font-size: 12px; }
   .work-bar .head h2 { font-size: 20px; }
-  .work-bar .filters { gap: 6px; }
-  .work-bar .filters button { min-height: 34px; padding: 0 10px; font-size: 12.5px; gap: 5px; }
+  /* filters: one row that scrolls sideways, instead of wrapping onto 2-3 rows */
+  .work-bar .filters {
+    flex-wrap: nowrap; gap: 6px; overflow-x: auto; overscroll-behavior-x: contain;
+    margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); scroll-padding-inline: var(--pad);
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 28px), transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 28px), transparent);
+  }
+  .work-bar .filters::-webkit-scrollbar { display: none; }
+  .work-bar .filters button { flex: none; min-height: 38px; padding: 0 12px; font-size: 13px; gap: 6px; }
   .work-bar .filters svg { width: 14px; height: 14px; }
 }
 @media (max-width: 560px) and (min-height: 500px) {
-  .work-bar { top: calc(env(safe-area-inset-top, 0px) + 50px); margin-inline: -18px; padding-inline: 18px; }
-}
-@media (max-width: 360px) and (min-height: 500px) {
-  .work-bar .filters { gap: 5px; }
-  .work-bar .filters button { padding: 0 7px; font-size: 12px; gap: 4px; }
+  .work-bar { --pad: 18px; }
 }
 /* phones: floating call + WhatsApp buttons at the bottom right, stacked vertically */
 @media (max-width: 760px) {
@@ -590,10 +604,19 @@ a.ch-value:hover { text-decoration: underline; text-decoration-color: var(--acce
   .fab svg { width: 26px; height: 26px; fill: currentColor; }
   .fab-wa { background: #25d366; }
   .fab-call { background: #2563eb; }
+  /* hidden while the profile card or Contact section is on screen (set in js/main.js) */
+  .fab { transition: opacity .2s ease, transform .2s ease, visibility 0s linear 0s; }
+  .fab.fab-hide { opacity: 0; transform: translateY(16px); visibility: hidden; pointer-events: none; transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s; }
   /* room at the end of the page so the buttons don't cover the footer */
   .shell { padding-bottom: calc(136px + env(safe-area-inset-bottom, 0px)); }
 }
+/* phones held sideways: smaller floating buttons side by side, so they cover less of the short screen */
+@media (max-width: 760px) and (max-height: 500px) {
+  .fab { flex-direction: row; gap: 8px; }
+  .fab a { width: 44px; height: 44px; }
+  .fab svg { width: 22px; height: 22px; }
+}
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html, html.smooth { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
