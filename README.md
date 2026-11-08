@@ -37,6 +37,7 @@ js/
   main.js                         Behaviour (typing effect, filters, dark mode, copy buttons, image loading)
 assets/
   HimanshuSingh_WebDeveloper.pdf  Resume opened by "Download CV"
+  og-image.png                    Preview picture shown when the link is shared (1200x630)
   img/                            Website screenshots and backup images (full list in section 4e)
     bullstreetedge-site.jpg       Screenshots: one file for each website project
     qualityroofs.jpg
@@ -413,6 +414,13 @@ Upload **the contents of this folder**, with `index.html` at the top level and n
 
 ### Option D: Vercel
 Import the folder or GitHub repo at https://vercel.com/new. Choose framework **Other**. No build command is needed.
+
+### After it's live: link preview
+When someone shares your link on LinkedIn, WhatsApp or X, they show `assets/og-image.png`. Some of these apps only accept a full web address, so once you know your site's address:
+1. In `index.html`, find the comment that starts with `Share preview`.
+2. Change both `assets/og-image.png` values (`og:image` and `twitter:image`) to the full address, for example `https://your-domain.com/assets/og-image.png`.
+3. Add the two lines shown in that comment (`canonical` and `og:url`) with your address.
+4. Check the result with LinkedIn's Post Inspector (https://www.linkedin.com/post-inspector/).
 
 ---
 
