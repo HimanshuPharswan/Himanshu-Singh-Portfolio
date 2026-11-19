@@ -573,17 +573,10 @@ a.ch-value:hover { text-decoration: underline; text-decoration-color: var(--acce
   .work-bar .head { gap: 4px; }
   .work-bar .eyebrow { font-size: 12px; }
   .work-bar .head h2 { font-size: 20px; }
-  /* filters: one row that scrolls sideways, instead of wrapping onto 2-3 rows */
-  .work-bar .filters {
-    flex-wrap: nowrap; gap: 6px; overflow-x: auto; overscroll-behavior-x: contain;
-    margin-inline: calc(var(--pad) * -1); padding-inline: var(--pad); scroll-padding-inline: var(--pad);
-    scrollbar-width: none;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 28px), transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 28px), transparent);
-  }
-  .work-bar .filters::-webkit-scrollbar { display: none; }
-  .work-bar .filters button { flex: none; min-height: 38px; padding: 0 12px; font-size: 13px; gap: 6px; }
-  .work-bar .filters svg { width: 14px; height: 14px; }
+  /* filters: wrap onto rows so every filter is visible at once, with no sideways scrolling */
+  .work-bar .filters { flex-wrap: wrap; gap: 6px 4px; }
+  .work-bar .filters button { flex: none; min-height: 36px; padding: 0 8px; font-size: 12px; gap: 5px; white-space: nowrap; }
+  .work-bar .filters svg { width: 13px; height: 13px; }
 }
 @media (max-width: 560px) and (min-height: 500px) {
   .work-bar { --pad: 18px; }

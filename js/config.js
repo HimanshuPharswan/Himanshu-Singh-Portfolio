@@ -40,6 +40,12 @@ window.SITE_CONFIG = {
     legalblow:      "assets/img/legalblow.jpg",   // LegalBlow Pro page screenshot
     airterminalsguide:   "assets/img/airterminalsguide.jpg",   // Air Terminals Guide website screenshot
     airterminalscounter: "assets/img/airterminalscounter.jpg",   // Air Terminals Counter website screenshot
-    airportsinsights:    "assets/img/airportsinsights.jpg"    // Airports Insights website screenshot
+    airportsinsights:    "assets/img/airportsinsights.jpg",   // Airports Insights website screenshot
+    usaairport:          "assets/img/usaairport.jpg",   // USA Airport website screenshot
+    webookdestinations:  "assets/img/webookdestinations.jpg",   // Webook Destinations website screenshot
+    globalairhq:         "assets/img/globalairhq.jpg",   // GlobalAirHQ website screenshot
+    flyairlineairports:  "assets/img/flyairlineairports.jpg",   // FlyAirlineAirports website screenshot
+    terminalscounter:    "assets/img/terminalscounter.jpg",   // Terminals Counter website screenshot
+    terminalcounter:     "assets/img/terminalcounter.jpg"    // TerminalCounter website screenshot
   }
 };

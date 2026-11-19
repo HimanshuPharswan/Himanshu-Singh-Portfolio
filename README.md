@@ -53,6 +53,12 @@ assets/
     airterminalsguide.jpg
     airterminalscounter.jpg
     airportsinsights.jpg
+    usaairport.jpg
+    webookdestinations.jpg
+    globalairhq.jpg
+    flyairlineairports.jpg
+    terminalscounter.jpg
+    terminalcounter.jpg
     bullstreetedge.jpg            Backups: used if the main image fails
     wpthemes.jpg
     n8n.jpg
@@ -152,7 +158,7 @@ So a broken link never shows a broken-image icon. You'll just see the backup ins
 
 This list shows which image each project card uses. The **Image** column is the value set in `js/config.js`. Once the site is online, the full address of a local image is your site's address followed by its path, for example `https://your-site.com/assets/img/clearway.jpg`.
 
-**Website screenshots** (homepages captured on 5 Nov 2026, so they won't update if a site changes):
+**Website screenshots** (homepages captured on 5 Nov 2026, and on 19 Nov 2026 for the last six rows, so they won't update if a site changes):
 
 | Project | Name in `config.js` | Image | Screenshot of |
 |---|---|---|---|
@@ -169,6 +175,12 @@ This list shows which image each project card uses. The **Image** column is the 
 | Air Terminals Guide | `airterminalsguide` | `assets/img/airterminalsguide.jpg` | https://www.airterminalsguide.com/ |
 | Air Terminals Counter | `airterminalscounter` | `assets/img/airterminalscounter.jpg` | https://www.airterminalscounter.com/ |
 | Airports Insights | `airportsinsights` | `assets/img/airportsinsights.jpg` | https://www.airportsinsights.com/ |
+| USA Airport | `usaairport` | `assets/img/usaairport.jpg` | https://www.usa-airport.com/ |
+| Webook Destinations | `webookdestinations` | `assets/img/webookdestinations.jpg` | https://webookdestinations.com/ |
+| GlobalAirHQ | `globalairhq` | `assets/img/globalairhq.jpg` | https://www.globalairhq.com/ |
+| FlyAirlineAirports | `flyairlineairports` | `assets/img/flyairlineairports.jpg` | https://www.flyairlineairports.com/ |
+| Terminals Counter | `terminalscounter` | `assets/img/terminalscounter.jpg` | https://www.terminalscounter.com/ |
+| TerminalCounter | `terminalcounter` | `assets/img/terminalcounter.jpg` | https://terminalcounter.com/ |
 
 **Xaca Technologies:** uses its logo, `assets/img/xaca-logo.webp`.
 
@@ -310,22 +322,26 @@ Each project is one `<article class="work">` block inside `<!-- WORK -->`:
 
 Delete its whole `<article class="work"> ... </article>` block. You can leave its line in `config.js` or delete it.
 
-### Filter buttons (WordPress / Custom Themes / Integrations / Automation / All)
+### Filter buttons (All / WordPress / Custom Themes / Integrations / Automation)
 
 `data-cat` controls which filters show the project. Use one or more of `wordpress`, `custom-themes`, `integration` and `automation`, separated by spaces. Every project also shows under **All**.
 
 To add a new filter, e.g. "Shopify":
-1. Add a button before the **All** button:
+1. Add a button after the **Automation** button:
    `<button type="button" data-filter="shopify">Shopify</button>`
 2. Add `shopify` to the `data-cat` of the projects that belong to it.
 
-"All" is last in the row and selected when the page loads (it has `class="on"`).
+"All" is first in the row and selected when the page loads (it has `class="on"`).
 
 Each button has a small icon, which is an `<svg>` inside the button in `index.html`. Its colour is set in `css/style.css`, for example `.filters [data-filter="wordpress"] svg { fill: #21759b; }`. A new button without an icon still works, so the icon is optional.
 
 ### Sticky heading and filters on phones
 
-On screens up to 760 px wide (and at least 500 px tall), the "Selected projects" heading and filter buttons stick below the top bar while the visitor scrolls through the Work section, then scroll away when the section ends. They're grouped in `<div class="work-bar">` in `index.html`, and the styles are under the `.work-bar` rules in `css/style.css`. Picking a filter while scrolled down the list returns to its first card, which is handled in the project filters part of `js/main.js`.
+On screens up to 760 px wide (and at least 500 px tall), the filter buttons stick below the top bar while the visitor scrolls through the Work section, then scroll away when the section ends. The "Selected projects" heading slides up behind the top bar, so only the filters stay on screen.
+
+The buttons wrap onto rows, so every filter is visible without scrolling sideways: two rows on most phones (360 px wide and up) and three on very small ones (320 px). If you add a new filter, check that the stuck rows don't cover too much of a phone screen. The button size is set by the `.work-bar .filters button` rule in `css/style.css`.
+
+On phones held sideways (less than 500 px tall), the filters don't stick, because they would cover too much of the short screen. They're grouped in `<div class="work-bar">` in `index.html`, and the styles are under the `.work-bar` rules in `css/style.css`. Picking a filter while scrolled down the list returns to its first card, which is handled in the project filters part of `js/main.js`.
 
 ---
 
