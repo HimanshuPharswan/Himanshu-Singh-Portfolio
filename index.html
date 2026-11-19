@@ -27,6 +27,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="css/style.css">
+<!-- Apply the visitor's saved light/dark choice before the page is drawn, so it never flashes the other theme. -->
+<script>try { var t = localStorage.getItem("hs-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
 </head>
 <body>
 <!--BODY-START-->
@@ -73,11 +75,11 @@
   <!-- ============ CONTENT ============ -->
   <main class="content">
     <nav class="tabs" aria-label="Sections">
-      <a href="#about" class="active">About</a>
+      <a href="#about" class="active" aria-current="location">About</a>
       <a href="#resume">Resume</a>
       <a href="#work">Work</a>
       <a href="#contact">Contact</a>
-      <button class="theme" id="theme-toggle" type="button" aria-label="Switch colour theme">
+      <button class="theme" id="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.5 5.5 0 0 1-7.54-7.54A9.1 9.1 0 0 0 12 3Z"/></svg>
       </button>
     </nav>
@@ -117,7 +119,7 @@
         <li>
           <div class="when">Present</div>
           <div class="what">
-            <h4>Current status</h4>
+            <h3>Current status</h3>
             <p class="org">Part-time developer · Freelance projects</p>
             <ul>
               <li>Currently working as a part-time developer and taking on freelance projects.</li>
@@ -127,7 +129,7 @@
         <li>
           <div class="when">Feb 2026 – Apr 2026</div>
           <div class="what">
-            <h4>Senior Designer and Developer</h4>
+            <h3>Senior Designer and Developer</h3>
             <p class="org"><a href="https://abbottechnologies.com/" target="_blank" rel="noopener">Abbot Technologies</a> · Full-time, Dehradun (onsite)</p>
             <ul>
               <li>Led development of 2 live websites in Elementor, tuning page speed and usability.</li>
@@ -142,7 +144,7 @@
         <li>
           <div class="when">Mar 2025 – Feb 2026</div>
           <div class="what">
-            <h4>Web Developer</h4>
+            <h3>Web Developer</h3>
             <p class="org"><a href="https://in.linkedin.com/company/xaca-technologies-solution-pvt-ltd" target="_blank" rel="noopener">Xaca Technologies Pvt. Ltd.</a> · Full-time, Dehradun (onsite)</p>
             <ul>
               <li>Built 45+ websites from scratch in custom PHP, focused on speed and functionality.</li>
@@ -159,7 +161,7 @@
         <li>
           <div class="when">Jan 2024 – Jan 2025</div>
           <div class="what">
-            <h4>Junior Web Developer</h4>
+            <h3>Junior Web Developer</h3>
             <p class="org"><a href="https://spiraclethemes.com/" target="_blank" rel="noopener">Spiracle Themes</a> · Full-time, Dehradun (onsite)</p>
             <ul>
               <li>Built 2+ live projects with custom core-PHP WordPress themes, using Git and GitHub.</li>
@@ -182,14 +184,14 @@
 
       <h3 class="sub">Skills</h3>
       <div class="skills">
-        <div><h5>Languages &amp; web</h5><p><i>HTML5</i><i>CSS3</i><i>JavaScript</i><i>PHP</i><i>SQL</i></p></div>
-        <div><h5>Frameworks &amp; backend</h5><p><i>React.js</i><i>Node.js</i><i>REST APIs</i><i>MySQL</i><i>Oracle</i><i>Hosting &amp; deployment</i></p></div>
-        <div><h5>CMS &amp; builders</h5><p><i>WordPress</i><i>Custom plugins</i><i>Elementor</i><i>Webflow</i><i>Shopify</i></p></div>
-        <div><h5>SEO &amp; performance</h5><p><i>Technical SEO</i><i>On-page SEO</i><i>Search Console</i><i>Core Web Vitals</i><i>GA4</i><i>Speed optimisation</i></p></div>
-        <div><h5>Integrations</h5><p><i>Razorpay</i><i>Stripe</i><i>WordPress + React</i><i>API integration</i></p></div>
-        <div><h5>Automation &amp; AI</h5><p><i>n8n</i><i>GoHighLevel</i><i>Claude</i><i>ChatGPT</i><i>Gemini</i></p></div>
-        <div><h5>Testing</h5><p><i>Cross-browser</i><i>Cross-device</i><i>Responsive</i><i>Debugging</i></p></div>
-        <div><h5>Design &amp; tools</h5><p><i>Figma</i><i>Canva</i><i>Photoshop</i><i>Git / GitHub</i><i>VS Code</i></p></div>
+        <div><h4>Languages &amp; web</h4><p><i>HTML5</i><i>CSS3</i><i>JavaScript</i><i>PHP</i><i>SQL</i></p></div>
+        <div><h4>Frameworks &amp; backend</h4><p><i>React.js</i><i>Node.js</i><i>REST APIs</i><i>MySQL</i><i>Oracle</i><i>Hosting &amp; deployment</i></p></div>
+        <div><h4>CMS &amp; builders</h4><p><i>WordPress</i><i>Custom plugins</i><i>Elementor</i><i>Webflow</i><i>Shopify</i></p></div>
+        <div><h4>SEO &amp; performance</h4><p><i>Technical SEO</i><i>On-page SEO</i><i>Search Console</i><i>Core Web Vitals</i><i>GA4</i><i>Speed optimisation</i></p></div>
+        <div><h4>Integrations</h4><p><i>Razorpay</i><i>Stripe</i><i>WordPress + React</i><i>API integration</i></p></div>
+        <div><h4>Automation &amp; AI</h4><p><i>n8n</i><i>GoHighLevel</i><i>Claude</i><i>ChatGPT</i><i>Gemini</i></p></div>
+        <div><h4>Testing</h4><p><i>Cross-browser</i><i>Cross-device</i><i>Responsive</i><i>Debugging</i></p></div>
+        <div><h4>Design &amp; tools</h4><p><i>Figma</i><i>Canva</i><i>Photoshop</i><i>Git / GitHub</i><i>VS Code</i></p></div>
       </div>
 
       <div class="split">
@@ -361,11 +363,11 @@
       <header class="head"><p class="eyebrow">work</p><h2>Selected projects</h2></header>
 
       <div class="filters" role="group" aria-label="Filter projects">
-        <button type="button" class="on" data-filter="all"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3V3Zm10 0h8v8h-8V3ZM3 13h8v8H3v-8Zm10 0h8v8h-8v-8Z"/></svg>All</button>
-        <button type="button" data-filter="wordpress"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/></svg>WordPress</button>
-        <button type="button" data-filter="custom-themes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8Zm-5.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>Custom Themes</button>
-        <button type="button" data-filter="integration"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-2 .9-2 2v3.8h1.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7s2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5Z"/></svg>Integrations</button>
-        <button type="button" data-filter="automation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>Automation</button>
+        <button type="button" class="on" data-filter="all" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8v8H3V3Zm10 0h8v8h-8V3ZM3 13h8v8H3v-8Zm10 0h8v8h-8v-8Z"/></svg>All</button>
+        <button type="button" data-filter="wordpress" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/></svg>WordPress</button>
+        <button type="button" data-filter="custom-themes" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0 0 18c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8Zm-5.5 9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>Custom Themes</button>
+        <button type="button" data-filter="integration" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4c-1.1 0-2 .9-2 2v3.8h1.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7s2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5a2.5 2.5 0 0 0 0-5Z"/></svg>Integrations</button>
+        <button type="button" data-filter="automation" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>Automation</button>
       </div>
       </div>
 
@@ -374,7 +376,7 @@
           <div class="thumb" data-img="bullstreetedge" data-fallback="BullStreetEdge"></div>
           <div class="body">
             <p class="stack">WordPress · React · PHP</p>
-            <h4>BullStreetEdge</h4>
+            <h3>BullStreetEdge</h3>
             <p>Built the bullstreetedge.com website and integrated it with the React web app, working with the React development team.</p>
             <p class="links"><a href="https://bullstreetedge.com" target="_blank" rel="noopener">bullstreetedge.com ↗</a><a href="https://app.bullstreetedge.com" target="_blank" rel="noopener">app.bullstreetedge.com ↗</a></p>
           </div>
@@ -384,7 +386,7 @@
           <div class="thumb" data-img="wpthemes" data-fallback="Custom WP Themes"></div>
           <div class="body">
             <p class="stack">PHP · HTML · CSS · JavaScript</p>
-            <h4>Custom WordPress themes</h4>
+            <h3>Custom WordPress themes</h3>
             <p>Several themes written from scratch in core PHP, covering both the front end and the back end, versioned on GitHub.</p>
           </div>
         </article>
@@ -393,7 +395,7 @@
           <div class="thumb" data-img="qualityroofs" data-fallback="Quality Roofs &amp; Exteriors"></div>
           <div class="body">
             <p class="stack">WordPress · Elementor</p>
-            <h4>Quality Roofs &amp; Exteriors</h4>
+            <h3>Quality Roofs &amp; Exteriors</h3>
             <p>Designed and built this WordPress site for a Delaware roofing contractor, then optimized its speed and performance.</p>
             <p class="links"><a href="https://qualityroofsandexteriors.com/" target="_blank" rel="noopener">qualityroofsandexteriors.com ↗</a></p>
           </div>
@@ -403,7 +405,7 @@
           <div class="thumb" data-img="superduper" data-fallback="Super Duper Heating &amp; Cooling"></div>
           <div class="body">
             <p class="stack">WordPress · Elementor</p>
-            <h4>Super Duper Heating &amp; Cooling</h4>
+            <h3>Super Duper Heating &amp; Cooling</h3>
             <p>Designed and developed a fast WordPress site that presents AC, furnace, HVAC and plumbing services clearly.</p>
             <p class="links"><a href="https://www.superduperservices.com/" target="_blank" rel="noopener">superduperservices.com ↗</a></p>
           </div>
@@ -413,7 +415,7 @@
           <div class="thumb" data-img="csrasitework" data-fallback="CSRA Site Work and Septic"></div>
           <div class="body">
             <p class="stack">WordPress · Elementor</p>
-            <h4>CSRA Site Work and Septic</h4>
+            <h3>CSRA Site Work and Septic</h3>
             <p>Designed and developed a fast WordPress site that presents septic pumping, inspections, repair and drain cleaning clearly.</p>
             <p class="links"><a href="https://csrasiteworkandseptic.com/" target="_blank" rel="noopener">csrasiteworkandseptic.com ↗</a></p>
           </div>
@@ -423,7 +425,7 @@
           <div class="thumb" data-img="kingsqueens" data-fallback="Kings Queens Roofing"></div>
           <div class="body">
             <p class="stack">WordPress · Elementor</p>
-            <h4>Kings Queens Roofing</h4>
+            <h3>Kings Queens Roofing</h3>
             <p>Designed and built this WordPress site for a Brooklyn roofing contractor, then optimized its speed and performance.</p>
             <p class="links"><a href="https://kingsqueensroofingny.com/" target="_blank" rel="noopener">kingsqueensroofingny.com ↗</a></p>
           </div>
@@ -433,7 +435,7 @@
           <div class="thumb" data-img="clearway" data-fallback="Clearway Exteriors"></div>
           <div class="body">
             <p class="stack">WordPress · Elementor</p>
-            <h4>Clearway Exteriors</h4>
+            <h3>Clearway Exteriors</h3>
             <p>Designed and developed a fast WordPress site that presents roofing, siding, window and storm damage services clearly.</p>
             <p class="links"><a href="https://clrwy.com/" target="_blank" rel="noopener">clrwy.com ↗</a></p>
           </div>
@@ -443,7 +445,7 @@
           <div class="thumb" data-img="monktech" data-fallback="Monk Technologies"></div>
           <div class="body">
             <p class="stack">WordPress · Elementor</p>
-            <h4>Monk Technologies</h4>
+            <h3>Monk Technologies</h3>
             <p>Designed and built this WordPress site for a Noida technology company, then optimized its speed and performance.</p>
             <p class="links"><a href="https://monktechnologies.net/" target="_blank" rel="noopener">monktechnologies.net ↗</a></p>
           </div>
@@ -453,7 +455,7 @@
           <div class="thumb" data-img="xdctowing" data-fallback="XDC Towing"></div>
           <div class="body">
             <p class="stack">WordPress · Elementor</p>
-            <h4>XDC Towing</h4>
+            <h3>XDC Towing</h3>
             <p>Designed and built this WordPress site for a New York towing company, then optimized its speed and performance.</p>
             <p class="links"><a href="https://xdctowingnyc.com/" target="_blank" rel="noopener">xdctowingnyc.com ↗</a></p>
           </div>
@@ -463,7 +465,7 @@
           <div class="thumb" data-img="pripsh" data-fallback="Pripsh"></div>
           <div class="body">
             <p class="stack">WordPress</p>
-            <h4>Pripsh</h4>
+            <h3>Pripsh</h3>
             <p>Designed and built this WordPress site for a digital agency, then optimized its speed and performance.</p>
             <p class="links"><a href="https://www.pripsh.com/" target="_blank" rel="noopener">pripsh.com ↗</a></p>
           </div>
@@ -473,7 +475,7 @@
           <div class="thumb" data-img="xaca" data-fallback="Company Redesign"></div>
           <div class="body">
             <p class="stack">Elementor · Webflow · Node.js</p>
-            <h4>Xaca company site &amp; client builds</h4>
+            <h3>Xaca company site &amp; client builds</h3>
             <p>Company website redesigned in Elementor, and three client sites built from scratch, responsive and cross-browser.</p>
           </div>
         </article>
@@ -482,7 +484,7 @@
           <div class="thumb" data-img="legalblow" data-fallback="LegalBlow Pro"></div>
           <div class="body">
             <p class="stack">WordPress · Custom theme</p>
-            <h4>LegalBlow Pro</h4>
+            <h3>LegalBlow Pro</h3>
             <p>Pro add-on for the LegalBlow WordPress theme for law firm websites, adding typography controls, a homepage slider, WooCommerce readiness and premium demos.</p>
             <p class="links"><a href="https://spiraclethemes.com/legalblow-pro-addons/" target="_blank" rel="noopener">spiraclethemes.com ↗</a></p>
           </div>
@@ -492,7 +494,7 @@
           <div class="thumb" data-img="airterminalsguide" data-fallback="Air Terminals Guide"></div>
           <div class="body">
             <p class="stack">WordPress · PHP</p>
-            <h4>Air Terminals Guide</h4>
+            <h3>Air Terminals Guide</h3>
             <p>Airport and terminal guide with search, terminal maps, check-in directions, security wait times and airline counter locations.</p>
             <p class="links"><a href="https://www.airterminalsguide.com/" target="_blank" rel="noopener">airterminalsguide.com ↗</a></p>
           </div>
@@ -502,7 +504,7 @@
           <div class="thumb" data-img="airterminalscounter" data-fallback="Air Terminals Counter"></div>
           <div class="body">
             <p class="stack">WordPress · PHP</p>
-            <h4>Air Terminals Counter</h4>
+            <h3>Air Terminals Counter</h3>
             <p>Travel information site with search, airline terminal pages, airport navigation guides and a blog.</p>
             <p class="links"><a href="https://www.airterminalscounter.com/" target="_blank" rel="noopener">airterminalscounter.com ↗</a></p>
           </div>
@@ -512,9 +514,8 @@
           <div class="thumb" data-img="airportsinsights" data-fallback="Airports Insights"></div>
           <div class="body">
             <p class="stack">WordPress · PHP</p>
-            <h4>Airports Insights</h4>
+            <h3>Airports Insights</h3>
             <p>Global airport guide with search, airport and airline terminal pages, plus quick links for wait times, check-in, maps and hotels.</p>
-            <p class="links"><a href="https://www.airportsinsights.com/" target="_blank" rel="noopener">airportsinsights.com ↗</a></p>
           </div>
         </article>
 
@@ -522,7 +523,7 @@
           <div class="thumb" data-img="usaairport" data-fallback="USA Airport"></div>
           <div class="body">
             <p class="stack">WordPress · PHP</p>
-            <h4>USA Airport</h4>
+            <h3>USA Airport</h3>
             <p>Directory of US airports and terminals with search, plus check-in, baggage, parking, transit, dining and airport map guides.</p>
             <p class="links"><a href="https://www.usa-airport.com/" target="_blank" rel="noopener">usa-airport.com ↗</a></p>
           </div>
@@ -532,7 +533,7 @@
           <div class="thumb" data-img="webookdestinations" data-fallback="Webook Destinations"></div>
           <div class="body">
             <p class="stack">WordPress · PHP</p>
-            <h4>Webook Destinations</h4>
+            <h3>Webook Destinations</h3>
             <p>Airline information site with airline search, booking and office details, airport terminal pages and an interactive globe.</p>
             <p class="links"><a href="https://webookdestinations.com/" target="_blank" rel="noopener">webookdestinations.com ↗</a></p>
           </div>
@@ -542,7 +543,7 @@
           <div class="thumb" data-img="globalairhq" data-fallback="GlobalAirHQ"></div>
           <div class="body">
             <p class="stack">WordPress · PHP</p>
-            <h4>GlobalAirHQ</h4>
+            <h3>GlobalAirHQ</h3>
             <p>Worldwide directory of airline offices and headquarters, with airline and city search, contact details and airport terminal pages.</p>
             <p class="links"><a href="https://www.globalairhq.com/" target="_blank" rel="noopener">globalairhq.com ↗</a></p>
           </div>
@@ -552,7 +553,7 @@
           <div class="thumb" data-img="flyairlineairports" data-fallback="FlyAirlineAirports"></div>
           <div class="body">
             <p class="stack">WordPress · Custom theme</p>
-            <h4>FlyAirlineAirports</h4>
+            <h3>FlyAirlineAirports</h3>
             <p>Airport and airline guide on a custom theme, with search, popular airports, terminals, check-in, baggage, parking and lounge details.</p>
             <p class="links"><a href="https://www.flyairlineairports.com/" target="_blank" rel="noopener">flyairlineairports.com ↗</a></p>
           </div>
@@ -562,7 +563,7 @@
           <div class="thumb" data-img="terminalscounter" data-fallback="Terminals Counter"></div>
           <div class="body">
             <p class="stack">WordPress · PHP</p>
-            <h4>Terminals Counter</h4>
+            <h3>Terminals Counter</h3>
             <p>Airport terminal information site with search, airline terminal pages, gates, facilities, parking, lounges and transport details.</p>
             <p class="links"><a href="https://www.terminalscounter.com/" target="_blank" rel="noopener">terminalscounter.com ↗</a></p>
           </div>
@@ -572,7 +573,7 @@
           <div class="thumb" data-img="terminalcounter" data-fallback="TerminalCounter"></div>
           <div class="body">
             <p class="stack">WordPress · PHP</p>
-            <h4>TerminalCounter</h4>
+            <h3>TerminalCounter</h3>
             <p>All-in-one airport guide with airport search, airports grouped by country, airline terminal pages, arrivals, departures and travel tips.</p>
             <p class="links"><a href="https://terminalcounter.com/" target="_blank" rel="noopener">terminalcounter.com ↗</a></p>
           </div>
@@ -582,7 +583,7 @@
           <div class="thumb" data-img="n8n" data-fallback="n8n Workflow"></div>
           <div class="body">
             <p class="stack">n8n · AI</p>
-            <h4>Social post automation</h4>
+            <h3>Social post automation</h3>
             <p>An n8n workflow that generates social media posts and schedules them, replacing a manual weekly task.</p>
           </div>
         </article>
@@ -591,7 +592,7 @@
           <div class="thumb" data-img="ghl" data-fallback="GoHighLevel"></div>
           <div class="body">
             <p class="stack">GoHighLevel</p>
-            <h4>GoHighLevel templates &amp; workflows</h4>
+            <h3>GoHighLevel templates &amp; workflows</h3>
             <p>Templates, campaigns and workflows built so the team can follow and manage them without help.</p>
           </div>
         </article>

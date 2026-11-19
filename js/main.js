@@ -82,7 +82,10 @@
     var y = window.scrollY + 140, current = 0;
     sections.forEach(function (s, n) { if (s && s.offsetTop <= y) current = n; });
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) current = sections.length - 1;
-    links.forEach(function (a, n) { a.classList.toggle("active", n === current); });
+    links.forEach(function (a, n) {
+      a.classList.toggle("active", n === current);
+      if (n === current) a.setAttribute("aria-current", "location"); else a.removeAttribute("aria-current");
+    });
   }
   window.addEventListener("scroll", setActive, { passive: true });
   window.addEventListener("resize", setActive);
@@ -113,13 +116,21 @@
   var root = document.documentElement;
   try { var saved = localStorage.getItem("hs-theme"); if (saved) root.setAttribute("data-theme", saved); } catch (e) {}
   var toggle = document.getElementById("theme-toggle");
-  if (toggle) toggle.addEventListener("click", function () {
+  var darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  function isDarkNow() {
     var attr = root.getAttribute("data-theme");
-    var isDark = attr ? attr === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
-    var next = isDark ? "light" : "dark";
+    return attr ? attr === "dark" : darkQuery.matches;
+  }
+  // aria-pressed tells screen readers whether dark mode is on
+  function syncToggle() { if (toggle) toggle.setAttribute("aria-pressed", isDarkNow() ? "true" : "false"); }
+  if (toggle) toggle.addEventListener("click", function () {
+    var next = isDarkNow() ? "light" : "dark";
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("hs-theme", next); } catch (e) {}
+    syncToggle();
   });
+  if (darkQuery.addEventListener) darkQuery.addEventListener("change", syncToggle);
+  syncToggle();
 
   /* ---- desktop: the profile card stays in view while the right side scrolls ----
      On windows too short for the whole card, it sticks with its bottom (buttons and contact
@@ -153,7 +164,7 @@
   buttons.forEach(function (b) {
     b.addEventListener("click", function () {
       var f = b.getAttribute("data-filter");
-      buttons.forEach(function (x) { x.classList.toggle("on", x === b); });
+      buttons.forEach(function (x) { x.classList.toggle("on", x === b); x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
       document.querySelectorAll(".work").forEach(function (w) {
         w.hidden = f !== "all" && w.getAttribute("data-cat").split(" ").indexOf(f) === -1;
       });

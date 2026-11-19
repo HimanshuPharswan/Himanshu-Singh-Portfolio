@@ -39,27 +39,28 @@ assets/
   HimanshuSingh_WebDeveloper.pdf  Resume opened by "Download CV"
   og-image.png                    Preview picture shown when the link is shared (1200x630)
   img/                            Website screenshots and backup images (full list in section 4e)
-    bullstreetedge-site.jpg       Screenshots: one file for each website project
-    qualityroofs.jpg
-    superduper.jpg
-    csrasitework.jpg
-    kingsqueens.jpg
-    clearway.jpg
-    monktech.jpg
-    xdctowing.jpg
-    pripsh.jpg
+    bullstreetedge-site.webp      Screenshots: one WebP file for each website project
+    qualityroofs.webp
+    superduper.webp
+    csrasitework.webp
+    kingsqueens.webp
+    clearway.webp
+    monktech.webp
+    xdctowing.webp
+    pripsh.webp
+    legalblow.webp
+    airterminalsguide.webp
+    airterminalscounter.webp
+    airportsinsights.webp
+    usaairport.webp
+    webookdestinations.webp
+    globalairhq.webp
+    flyairlineairports.webp
+    terminalscounter.webp
+    terminalcounter.webp
     xaca-logo.webp                Xaca Technologies logo
-    legalblow.jpg
-    airterminalsguide.jpg
-    airterminalscounter.jpg
-    airportsinsights.jpg
-    usaairport.jpg
-    webookdestinations.jpg
-    globalairhq.jpg
-    flyairlineairports.jpg
-    terminalscounter.jpg
-    terminalcounter.jpg
-    bullstreetedge.jpg            Backups: used if the main image fails
+    <name>.jpg                    A JPG copy of each screenshot above: the backup if the WebP fails
+    bullstreetedge.jpg            Backups for BullStreetEdge and the Unsplash photos
     wpthemes.jpg
     n8n.jpg
     ghl.jpg
@@ -101,7 +102,7 @@ Every image is set in **`js/config.js`**:
 ```js
 images: {
   profile:        "",                                     // your photo
-  bullstreetedge: "assets/img/bullstreetedge-site.jpg",   // a file inside the site folder
+  bullstreetedge: "assets/img/bullstreetedge-site.webp",  // a file inside the site folder
   wpthemes:       "https://images.unsplash.com/...",      // an online image
   // ...one line for each project
 }
@@ -116,7 +117,7 @@ Each value can be any one of these:
 | Google Drive share link | `"https://drive.google.com/file/d/1AbC.../view?usp=sharing"` |
 | Just the Drive file ID | `"1AbCdEfGhIjKlMnOpQrStUvWxYz123456"` |
 | Any normal image URL (Unsplash etc.) | `"https://images.unsplash.com/photo-...?w=1200"` |
-| A file inside the site folder | `"assets/img/myproject.jpg"` |
+| A file inside the site folder | `"assets/img/myproject.webp"` |
 | Empty | `""` shows the built-in placeholder |
 
 ### 4a. Using Google Drive (recommended)
@@ -141,7 +142,7 @@ Unsplash photos are free to use, and no credit is required.
 
 ### 4c. Using a local file
 
-Put the image in `assets/img/`, then set the value to `"assets/img/yourfile.jpg"`. Filenames are case-sensitive on most web hosts, so `Photo.JPG` and `photo.jpg` are different files.
+Put the image in `assets/img/`, then set the value to `"assets/img/yourfile.webp"` (JPG and PNG work too). Filenames are case-sensitive on most web hosts, so `Photo.JPG` and `photo.jpg` are different files.
 
 ### 4d. What happens if an image fails to load
 
@@ -156,31 +157,31 @@ So a broken link never shows a broken-image icon. You'll just see the backup ins
 
 ### 4e. Current project images
 
-This list shows which image each project card uses. The **Image** column is the value set in `js/config.js`. Once the site is online, the full address of a local image is your site's address followed by its path, for example `https://your-site.com/assets/img/clearway.jpg`.
+This list shows which image each project card uses. The **Image** column is the value set in `js/config.js`. Once the site is online, the full address of a local image is your site's address followed by its path, for example `https://your-site.com/assets/img/clearway.webp`.
 
 **Website screenshots** (homepages captured on 5 Nov 2026, and on 19 Nov 2026 for the last six rows, so they won't update if a site changes):
 
 | Project | Name in `config.js` | Image | Screenshot of |
 |---|---|---|---|
-| BullStreetEdge | `bullstreetedge` | `assets/img/bullstreetedge-site.jpg` | https://bullstreetedge.com/ |
-| Quality Roofs & Exteriors | `qualityroofs` | `assets/img/qualityroofs.jpg` | https://qualityroofsandexteriors.com/ |
-| Super Duper Heating & Cooling | `superduper` | `assets/img/superduper.jpg` | https://www.superduperservices.com/ |
-| CSRA Site Work and Septic | `csrasitework` | `assets/img/csrasitework.jpg` | https://csrasiteworkandseptic.com/ |
-| Kings Queens Roofing | `kingsqueens` | `assets/img/kingsqueens.jpg` | https://kingsqueensroofingny.com/ |
-| Clearway Exteriors | `clearway` | `assets/img/clearway.jpg` | https://clrwy.com/ |
-| Monk Technologies | `monktech` | `assets/img/monktech.jpg` | https://monktechnologies.net/ |
-| XDC Towing | `xdctowing` | `assets/img/xdctowing.jpg` | https://xdctowingnyc.com/ |
-| Pripsh | `pripsh` | `assets/img/pripsh.jpg` | https://www.pripsh.com/ |
-| LegalBlow Pro | `legalblow` | `assets/img/legalblow.jpg` | https://spiraclethemes.com/legalblow-pro-addons/ |
-| Air Terminals Guide | `airterminalsguide` | `assets/img/airterminalsguide.jpg` | https://www.airterminalsguide.com/ |
-| Air Terminals Counter | `airterminalscounter` | `assets/img/airterminalscounter.jpg` | https://www.airterminalscounter.com/ |
-| Airports Insights | `airportsinsights` | `assets/img/airportsinsights.jpg` | https://www.airportsinsights.com/ |
-| USA Airport | `usaairport` | `assets/img/usaairport.jpg` | https://www.usa-airport.com/ |
-| Webook Destinations | `webookdestinations` | `assets/img/webookdestinations.jpg` | https://webookdestinations.com/ |
-| GlobalAirHQ | `globalairhq` | `assets/img/globalairhq.jpg` | https://www.globalairhq.com/ |
-| FlyAirlineAirports | `flyairlineairports` | `assets/img/flyairlineairports.jpg` | https://www.flyairlineairports.com/ |
-| Terminals Counter | `terminalscounter` | `assets/img/terminalscounter.jpg` | https://www.terminalscounter.com/ |
-| TerminalCounter | `terminalcounter` | `assets/img/terminalcounter.jpg` | https://terminalcounter.com/ |
+| BullStreetEdge | `bullstreetedge` | `assets/img/bullstreetedge-site.webp` | https://bullstreetedge.com/ |
+| Quality Roofs & Exteriors | `qualityroofs` | `assets/img/qualityroofs.webp` | https://qualityroofsandexteriors.com/ |
+| Super Duper Heating & Cooling | `superduper` | `assets/img/superduper.webp` | https://www.superduperservices.com/ |
+| CSRA Site Work and Septic | `csrasitework` | `assets/img/csrasitework.webp` | https://csrasiteworkandseptic.com/ |
+| Kings Queens Roofing | `kingsqueens` | `assets/img/kingsqueens.webp` | https://kingsqueensroofingny.com/ |
+| Clearway Exteriors | `clearway` | `assets/img/clearway.webp` | https://clrwy.com/ |
+| Monk Technologies | `monktech` | `assets/img/monktech.webp` | https://monktechnologies.net/ |
+| XDC Towing | `xdctowing` | `assets/img/xdctowing.webp` | https://xdctowingnyc.com/ |
+| Pripsh | `pripsh` | `assets/img/pripsh.webp` | https://www.pripsh.com/ |
+| LegalBlow Pro | `legalblow` | `assets/img/legalblow.webp` | https://spiraclethemes.com/legalblow-pro-addons/ |
+| Air Terminals Guide | `airterminalsguide` | `assets/img/airterminalsguide.webp` | https://www.airterminalsguide.com/ |
+| Air Terminals Counter | `airterminalscounter` | `assets/img/airterminalscounter.webp` | https://www.airterminalscounter.com/ |
+| Airports Insights | `airportsinsights` | `assets/img/airportsinsights.webp` | https://www.airportsinsights.com/ (offline since Nov 2026, so the card has no link) |
+| USA Airport | `usaairport` | `assets/img/usaairport.webp` | https://www.usa-airport.com/ |
+| Webook Destinations | `webookdestinations` | `assets/img/webookdestinations.webp` | https://webookdestinations.com/ |
+| GlobalAirHQ | `globalairhq` | `assets/img/globalairhq.webp` | https://www.globalairhq.com/ |
+| FlyAirlineAirports | `flyairlineairports` | `assets/img/flyairlineairports.webp` | https://www.flyairlineairports.com/ |
+| Terminals Counter | `terminalscounter` | `assets/img/terminalscounter.webp` | https://www.terminalscounter.com/ |
+| TerminalCounter | `terminalcounter` | `assets/img/terminalcounter.webp` | https://terminalcounter.com/ |
 
 **Xaca Technologies:** uses its logo, `assets/img/xaca-logo.webp`.
 
@@ -196,16 +197,18 @@ This list shows which image each project card uses. The **Image** column is the 
 
 **Backups for the screenshots:**
 
-- **BullStreetEdge:** its backup is `assets/img/bullstreetedge.jpg`, which shows if `bullstreetedge-site.jpg` fails to load.
-- **All the other screenshots:** the image is also its own backup, because the file has the same name the site looks for. If one of these files goes missing, the card shows the built-in placeholder.
+Screenshots are WebP files, which are about 40% smaller than JPG. Each one also has a JPG copy with the project's name, for example `assets/img/clearway.jpg`, which the site uses if the WebP fails to load (see 4d).
 
-**To replace a screenshot:** save the new image in `assets/img/` with the same filename, at 1200 × 750 px. If you use a new filename, also update its line in `js/config.js`.
+- **BullStreetEdge:** its backup is `assets/img/bullstreetedge.jpg`, which shows if `bullstreetedge-site.webp` fails to load.
+- **If both files go missing,** the card shows the built-in placeholder.
+
+**To replace a screenshot:** save the new image in `assets/img/` at 1200 × 750 px, as `<name>.webp` (and ideally `<name>.jpg` as the backup), using the project's name from the table. Free tools such as https://squoosh.app convert a JPG or PNG to WebP. If you use a new filename, also update its line in `js/config.js`.
 
 ### Recommended image sizes
 
 | Image | Shape | Size |
 |---|---|---|
-| Project images | landscape 16:10 | 1200 × 750 px or larger, JPG, under 400 KB |
+| Project images | landscape 16:10 | 1200 × 750 px, WebP (with a JPG backup), under 150 KB |
 | Profile photo | square | 600 × 600 px or larger |
 
 The site crops images to fit, so keep the important part near the centre.
@@ -250,7 +253,7 @@ Copy one whole `<li> ... </li>` block inside `<ol class="timeline">` and paste i
 <li>
   <div class="when">Jan 2027 – Present</div>
   <div class="what">
-    <h4>Job Title</h4>
+    <h3>Job Title</h3>
     <p class="org"><a href="https://company.com/" target="_blank" rel="noopener">Company Name</a> · Full-time, onsite</p>
     <ul>
       <li>What you did.</li>
@@ -301,7 +304,7 @@ Each project is one `<article class="work">` block inside `<!-- WORK -->`:
   <div class="thumb" data-img="newproject" data-fallback="Project Name"></div>
   <div class="body">
     <p class="stack">WordPress · Elementor</p>
-    <h4>Project Name</h4>
+    <h3>Project Name</h3>
     <p>One or two sentences on what you built and why it mattered.</p>
     <p class="links"><a href="https://example.com" target="_blank" rel="noopener">example.com ↗</a></p>
   </div>
@@ -404,7 +407,7 @@ The same tokens appear **twice more** below it, for dark mode (once under `@medi
 
 **Fonts** come from Google Fonts (Bricolage Grotesque for headings, Instrument Sans for text, JetBrains Mono for small code-style labels). To swap one, change the `<link ... fonts.googleapis.com ...>` line in `index.html` and the `--f-display`, `--f-body` or `--f-mono` value in `style.css`.
 
-**Dark mode:** the site follows the visitor's device setting automatically. The moon button in the top bar switches it manually, and the choice is remembered in that browser.
+**Dark mode:** the site follows the visitor's device setting automatically. The moon button in the top bar switches it manually, and the choice is remembered in that browser. A short script in the `<head>` of `index.html` applies the remembered choice before the page is drawn, so the other theme never flashes on load.
 
 ---
 
