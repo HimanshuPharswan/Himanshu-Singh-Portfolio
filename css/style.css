@@ -596,7 +596,6 @@ a.ch-value:hover { text-decoration: underline; text-decoration-color: var(--acce
   }
   .fab svg { width: 26px; height: 26px; fill: currentColor; }
   .fab-wa { background: #25d366; }
-  .fab-call { background: #2563eb; }
   /* hidden while the profile card or Contact section is on screen (set in js/main.js) */
   .fab { transition: opacity .2s ease, transform .2s ease, visibility 0s linear 0s; }
   .fab.fab-hide { opacity: 0; transform: translateY(16px); visibility: hidden; pointer-events: none; transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s; }
