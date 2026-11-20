@@ -306,9 +306,9 @@
     });
   });
 
-  /* ---- floating call + WhatsApp buttons (phones) ----
-     Hidden while the profile card or the Contact section is on screen, so they never cover
-     the buttons there (both already offer call and WhatsApp). */
+  /* ---- floating WhatsApp button (phones) ----
+     Hidden while the profile card or the Contact section is on screen, so it never covers
+     the buttons there. */
   var fab = document.querySelector(".fab");
   if (fab && "IntersectionObserver" in window) {
     var fabCovers = new Map();

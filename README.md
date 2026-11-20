@@ -350,21 +350,21 @@ On phones held sideways (less than 500 px tall), the filters don't stick, becaus
 
 ## 9. Contact details
 
-Your main email, phone and LinkedIn appear in **two places** in `index.html`, so update both:
+Your main email and LinkedIn appear in **two places** in `index.html`, so update both:
 
-1. **Profile card icons:** search for `aria-label="LinkedIn"`, `mailto:` and `tel:`.
+1. **Profile card icons:** search for `aria-label="LinkedIn"` and `mailto:`.
 2. **Contact section:** search for `<!-- CONTACT -->`.
 
-The second email (`himanshusingh2k1@gmail.com`) and WhatsApp appear only in the Contact section.
+The second email (`himanshusingh2k1@gmail.com`) and WhatsApp appear only in the Contact section. The site has no call links, so your phone number isn't shown as text.
 
-Phone links use the international format without spaces: `tel:+919389718063`.
+If you add a call link again, use the international format without spaces: `tel:+91XXXXXXXXXX`.
 
 ### WhatsApp
 
 WhatsApp has **three links**, so change all of them: the number and icon on the WhatsApp card, and the floating button. Search for `wa.me`:
 
 ```
-https://wa.me/919389718063?text=Hi%20Himanshu%2C%20I%20want%20to%20discuss%20a%20Project%20with%20you
+https://wa.me/91XXXXXXXXXX?text=Hi%20Himanshu%2C%20I%20want%20to%20discuss%20a%20Project%20with%20you
 ```
 
 - **Number:** country code and number, with no `+` or spaces.
